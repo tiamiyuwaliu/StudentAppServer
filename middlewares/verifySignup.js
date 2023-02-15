@@ -1,4 +1,4 @@
-const user = require("../models/user");
+const User = require("../models/user");
 
 checkDuplicateEmail = (req, res, next) => {
     User.findOne({
@@ -12,7 +12,8 @@ checkDuplicateEmail = (req, res, next) => {
             res.status(400).send({message: "Failed! Email address is already exists"});
             return;
         }
+        next()
     })
 }
 
-module.exports = checkDuplicateEmail;
+module.exports = {checkDuplicateEmail};
